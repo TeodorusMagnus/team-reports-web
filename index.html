@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#0f1115" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Отчёты" />
+    <meta name="referrer" content="no-referrer" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="apple-touch-icon" href="icon-180.png" />
+    <link rel="icon" type="image/png" href="icon-192.png" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'self' https://api.github.com; img-src 'self' https: data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'"
+    />
+    <title>Отчёты команды</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="mobile/mobile.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+            <rect x="3" y="3" width="26" height="26" rx="7" fill="none" stroke="currentColor" stroke-width="2.2" />
+            <path d="M9 11h14M9 16h14M9 21h8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+          </svg>
+          <div>
+            <div class="brand-title">Отчёты команды</div>
+            <div class="brand-sub"></div>
+          </div>
+        </div>
+
+        <div class="modes" id="modes"></div>
+
+        <nav class="nav" id="nav-views"></nav>
+
+        <div class="nav-label">Команда</div>
+        <nav class="nav" id="nav-agents"></nav>
+
+        <div class="sidebar-foot">
+          <div class="sync" id="sync-status"><span class="dot"></span><span class="sync-text">—</span></div>
+          <button class="btn-ghost" id="btn-settings" title="Настройки">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" /><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.1-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9v.03a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z" /></svg>
+            Настройки
+          </button>
+        </div>
+      </aside>
+
+      <section class="list-pane">
+        <header class="list-head">
+          <div class="list-title-row">
+            <h1 id="list-title">Все отчёты</h1>
+            <div class="list-actions">
+              <button class="btn-primary sm tasks-only" id="btn-new-task" title="Новая задача (N)">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg>Задача
+              </button>
+              <button class="icon-btn" id="btn-read-all" title="Отметить все прочитанными">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 13 4 4L16 7M10 15l2 2L22 7" /></svg>
+              </button>
+              <button class="icon-btn" id="btn-refresh" title="Проверить новые отчёты">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36M21 4v5h-5" /></svg>
+              </button>
+            </div>
+          </div>
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="m20 20-3.5-3.5" /></svg>
+            <input id="search" type="search" placeholder="Поиск по отчётам" autocomplete="off" />
+          </label>
+        </header>
+        <div class="list" id="list" tabindex="0"></div>
+      </section>
+
+      <main class="reader" id="reader"></main>
+    </div>
+
+    <div class="modal-backdrop" id="settings" hidden>
+      <form class="modal" id="settings-form">
+        <h2>Настройки</h2>
+
+        <fieldset>
+          <legend>Источник отчётов (GitHub)</legend>
+          <div class="grid-2">
+            <label>Владелец<input name="owner" required /></label>
+            <label>Репозиторий<input name="repo" required /></label>
+          </div>
+          <label>Ветка<input name="branch" placeholder="main" /></label>
+          <label>
+            Токен доступа
+            <input name="token" type="password" autocomplete="off" placeholder="github_pat_…" />
+            <span class="hint" id="token-hint"></span>
+          </label>
+          <details class="howto">
+            <summary>Как получить токен</summary>
+            <ol>
+              <li>Откройте <a href="https://github.com/settings/personal-access-tokens/new" data-external>создание токена на GitHub</a>.</li>
+              <li>Название — например, «Отчёты команды»; срок — на ваше усмотрение.</li>
+              <li><b>Repository access</b> → <i>Only select repositories</i> → выберите репозиторий с отчётами.</li>
+              <li><b>Permissions</b> → <i>Contents</i> → <b>Read-only</b>; <i>Issues</i> → <b>Read and write</b> (для задач).</li>
+              <li>Нажмите <b>Generate token</b>, скопируйте его и вставьте сюда.</li>
+            </ol>
+            <p>Токен хранится на этом компьютере в зашифрованном виде (Windows DPAPI).</p>
+          </details>
+        </fieldset>
+
+        <fieldset>
+          <legend>Поведение</legend>
+          <label>Проверять каждые, минут<input name="pollMinutes" type="number" min="1" max="120" /></label>
+          <label class="check"><input name="notifications" type="checkbox" /> Уведомления Windows о новых отчётах</label>
+          <label class="check"><input name="autoStart" type="checkbox" /> Запускать вместе с Windows (свёрнутым в трей)</label>
+          <label class="check"><input name="startHidden" type="checkbox" /> Всегда запускаться свёрнутым в трей</label>
+        </fieldset>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="settings-cancel">Отмена</button>
+          <button type="submit" class="btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="modal-backdrop" id="new-task" hidden>
+      <form class="modal" id="task-form" autocomplete="off">
+        <h2>Новая задача</h2>
+        <fieldset>
+          <legend>Исполнитель</legend>
+          <div class="agent-picks" id="task-agents"></div>
+        </fieldset>
+        <label>Что нужно сделать<input name="title" required maxlength="200" placeholder="Например: подобрать монитор 27&quot; до 40 000 ₽" /></label>
+        <label>Подробности
+          <textarea name="body" rows="7" placeholder="Контекст, ограничения, к какому сроку нужен результат. Поддерживается Markdown."></textarea>
+        </label>
+        <p class="hint">Срочность исполнитель оценит сам. Задача будет доставлена ему автоматически в течение пары минут.</p>
+        <div class="modal-actions">
+          <span class="form-error" id="task-error"></span>
+          <button type="button" class="btn-secondary" id="task-cancel">Отмена</button>
+          <button type="submit" class="btn-primary">Поставить задачу</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="vendor/marked.umd.js"></script>
+    <script src="vendor/purify.min.js"></script>
+    <script src="mobile/backend.js"></script>
+    <script src="tasks.js"></script>
+    <script src="renderer.js"></script>
+    <script src="mobile/mobile-ui.js"></script>
+  </body>
+</html>
