@@ -183,3 +183,23 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
   #btn-new-task { display: none !important; }
   body[data-mode='tasks'] .m-new-task { display: flex; justify-content: center; width: calc(100% - 4px); margin: 0 2px 14px; padding: 10px 14px; font-size: 14.5px; }
 }
+
+/* ---------- экран «Сегодня» ---------- */
+@media (max-width: 1099px) {
+  body[data-mode='today'] .list-pane { display: none; }
+  body[data-mode='today'] .reader {
+    left: 0; z-index: 1; transform: none; visibility: visible; transition: none;
+    padding-top: var(--sat);
+    padding-bottom: calc(var(--tabs-h) + var(--sab));
+  }
+  body[data-mode='today'] #m-readerbar { display: none !important; }
+  body[data-mode='today'] #m-tabs { right: 0; width: auto; border-right: 0; }
+  .t-head { padding-top: 2px; }
+  .t-menu { display: inline-flex; }
+  .t-tools { position: static; justify-content: space-between; margin: -6px -6px 4px; }
+  .t-agent { grid-template-columns: 28px 1fr auto; }
+  .t-agent-last { display: none; }
+  #m-tabs .modes { grid-template-columns: 1fr 1fr 1fr; }
+  #m-tabs .mode[data-switch='today'] { grid-column: auto; }
+  #m-tabs .mode { font-size: 14px; }
+}
