@@ -12,9 +12,10 @@
 body.mobile { -webkit-tap-highlight-color: transparent; }
 
 /* Раскладки по ширине окна (CSS-пиксели, dp):
-   - телефон и внешний экран Galaxy Z Fold8 (около 420–450 dp по ширине)
+   - телефон и внешний экран Galaxy Z Fold7 (около 412 dp по ширине)
      или любой экран ниже 500 dp по высоте: одна панель за раз;
-   - внутренний экран Fold8 / Fold8 Ultra и планшет в портрете (600–1099 dp):
+   - внутренний экран Fold7 (около 750×830 dp; в альбомной ориентации ~830 dp)
+     и планшет в портрете (600–1099 dp):
      две панели, список и карточка рядом, разделы в выезжающем меню;
    - от 1100 dp: обычная трёхпанельная раскладка.
    Значения дублируются в mobile-ui.js (SINGLE / COMPACT). */
@@ -129,9 +130,16 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
   .form-error { flex-basis: 100%; }
 }
 
-/* Две панели: внутренний экран Fold8 (раскрыт, в любой ориентации), Fold8 Ultra, планшет. */
+/* Две панели: внутренний экран Fold7 (раскрыт, в любой ориентации), планшет. */
 @media (min-width: 600px) and (max-width: 1099px) and (min-height: 500px) {
-  :root { --listw: clamp(280px, 40vw, 380px); }
+  /* На Fold7 в портрете это ~320 dp списка и ~430 dp карточки. */
+  :root { --listw: clamp(320px, 42vw, 380px); }
+  /* Узкий список: заголовок помельче и кнопки компактнее, чтобы «Все поручения» влезали целиком. */
+  .list-title-row { gap: 2px; }
+  .list-title-row h1, html[data-theme='throne'] .list-title-row h1 { font-size: 18px; letter-spacing: 0; }
+  .list-title-row .icon-btn { width: 36px; height: 36px; }
+  .list-title-row .icon-btn svg { width: 20px; height: 20px; }
+  #btn-new-task { width: 36px !important; height: 36px !important; margin-right: 2px; }
   .list-pane { right: auto; width: var(--listw); border-right: 1px solid var(--line); }
   #m-tabs { right: auto; width: var(--listw); box-sizing: border-box; border-right: 1px solid var(--line); }
   .reader {
@@ -161,8 +169,9 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
 #btn-new-task { font-size: 0; gap: 0; width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 12px; }
 #btn-new-task svg { width: 20px; height: 20px; margin: 0; }
 
-/* Раскрытый Fold8 в альбомной ориентации: карточке хватает места для кнопок в строку. */
-@media (min-width: 800px) and (max-width: 1099px) and (min-height: 500px) {
+/* Широкая карточка (планшет в альбомной ориентации): кнопки в строку с заголовком.
+   На Fold7 в альбомной карточке ~500 dp — там кнопки остаются отдельной строкой. */
+@media (min-width: 960px) and (max-width: 1099px) and (min-height: 500px) {
   .reader-head { flex-wrap: nowrap; }
   .reader-actions { flex-basis: auto; }
   .reader-actions > * { flex: 0 0 auto; }
