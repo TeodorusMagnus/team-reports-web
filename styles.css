@@ -297,3 +297,21 @@ html[data-theme='throne'] ::-webkit-scrollbar-thumb { background-color: #4a3768;
 
 /* Кнопка «Новая задача» в выезжающем меню — только в мобильной раскладке. */
 .m-new-task { display: none; }
+
+/* ---------- голосовой ввод ---------- */
+.voice-wrap { position: relative; display: block; }
+.voice-wrap > input { width: 100%; box-sizing: border-box; padding-right: 44px !important; }
+.voice-wrap.area > textarea { padding-right: 46px; display: block; }
+.mic-btn {
+  position: absolute; right: 6px; top: 50%; transform: translateY(-50%);
+  width: 34px; height: 34px; border-radius: 50%; border: 0; padding: 0;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; color: var(--text-2); cursor: pointer;
+}
+.voice-wrap.area > .mic-btn { top: 6px; transform: none; }
+.mic-btn svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.mic-btn:hover { color: var(--accent); background: var(--accent-soft); }
+.mic-btn.listening { color: var(--on-accent); background: #e5484d; animation: mic-pulse 1.2s ease-in-out infinite; }
+@keyframes mic-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(229, 72, 77, 0.55); } 50% { box-shadow: 0 0 0 7px rgba(229, 72, 77, 0); } }
+.voice-hint { display: block; margin-top: 6px; font-size: 12.5px; color: var(--accent); }
+.voice-hint[hidden] { display: none; }

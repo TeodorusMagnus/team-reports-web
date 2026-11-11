@@ -146,9 +146,9 @@
           <legend>Исполнитель</legend>
           <div class="agent-picks" id="task-agents"></div>
         </fieldset>
-        <label>Что нужно сделать<input name="title" required maxlength="200" placeholder="Например: подобрать монитор 27&quot; до 40 000 ₽" /></label>
+        <label>Что нужно сделать<input name="title" data-voice required maxlength="200" placeholder="Например: подобрать монитор 27&quot; до 40 000 ₽" /></label>
         <label>Подробности
-          <textarea name="body" rows="7" placeholder="Контекст, ограничения, к какому сроку нужен результат. Поддерживается Markdown."></textarea>
+          <textarea name="body" data-voice rows="7" placeholder="Контекст, ограничения, к какому сроку нужен результат. Поддерживается Markdown."></textarea>
         </label>
         <p class="hint">Срочность исполнитель оценит сам. Задача будет доставлена ему автоматически в течение пары минут.</p>
         <div class="modal-actions">
@@ -165,5 +165,6 @@
     <script src="tasks.js"></script>
     <script src="renderer.js"></script>
     <script src="mobile/mobile-ui.js"></script>
+    <script src="voice.js"></script>
   </body>
 </html>
