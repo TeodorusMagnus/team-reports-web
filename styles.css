@@ -129,10 +129,24 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .md pre { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; overflow-x: auto; }
 .md pre code { background: none; border: 0; padding: 0; font-size: 13px; }
 .md blockquote { border-left: 3px solid var(--line-2); padding: 2px 16px; color: var(--text-2); }
-.md table { border-collapse: collapse; width: 100%; font-size: 14px; display: block; overflow-x: auto; }
-.md th, .md td { border: 1px solid var(--line); padding: 7px 11px; text-align: left; }
+/* Таблицы: обёртка прокручивается по горизонтали, сама таблица не сжимается в столбик.
+   .md переносит слова «где угодно» (overflow-wrap: anywhere) — в таблицах это давало
+   колонки шириной в одну букву, поэтому здесь перенос только по словам. */
+.md .table-wrap { margin: 0 0 1em; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+.md table { border-collapse: collapse; width: auto; min-width: 100%; font-size: 14px; margin: 0; }
+.md th, .md td { border: 1px solid var(--line); padding: 7px 11px; text-align: left; vertical-align: top;
+  overflow-wrap: normal; word-break: normal; min-width: 7em; }
+.md th.nw, .md td.nw { white-space: nowrap; min-width: 0; }
 .md th { background: var(--bg-2); font-weight: 600; }
-.md img { max-width: 100%; border-radius: 8px; }
+.md img { display: block; max-width: 100%; height: auto; margin: 0 auto; border-radius: 8px; }
+.md img.repo-img { background: #fff; cursor: zoom-in; }
+.md .img-wrap { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 0 1em; border-radius: 8px; }
+.md .img-wrap.zoom img { max-width: none; width: 200%; cursor: zoom-out; }
+.md .img-wrap .img-error { margin: 0; }
+.md img.loading { width: 100%; aspect-ratio: 16 / 9; background: var(--bg-2); border: 1px solid var(--line);
+  animation: img-pulse 1.4s ease-in-out infinite; }
+@keyframes img-pulse { 50% { opacity: 0.55; } }
+.md .img-error { padding: 12px 14px; border: 1px dashed var(--line-2); border-radius: 8px; color: var(--text-2); font-size: 13.5px; margin: 0 0 1em; }
 .md hr { border: 0; height: 1px; background: var(--line); margin: 24px 0; }
 .md li { margin: 0.25em 0; }
 .md input[type='checkbox'] { margin-right: 6px; }

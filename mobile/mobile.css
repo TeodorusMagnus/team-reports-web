@@ -71,6 +71,8 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
   .reader h1.title { font-size: 22px; }
   .md { font-size: 15.5px; }
   .md table { font-size: 13.5px; }
+  .md th, .md td { padding: 6px 8px; min-width: 6.5em; }
+  .md th.nw, .md td.nw { min-width: 0; }
   .welcome { margin-top: 6vh; padding: 0 20px; }
   .composer { padding-bottom: 8px; }
   .composer textarea { font-size: 16px; } /* 16px — без автоматического зума поля */
