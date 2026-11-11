@@ -16,6 +16,7 @@
         <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 12 3 3 5-6"/></svg>
         <h3>${s?"\u041D\u0438\u0447\u0435\u0433\u043E \u043D\u0435 \u043D\u0430\u0439\u0434\u0435\u043D\u043E":L("\u0417\u0430\u0434\u0430\u0447 \u043D\u0435\u0442")}</h3>
         <div>${s?"\u041F\u043E\u043F\u0440\u043E\u0431\u0443\u0439\u0442\u0435 \u0438\u0437\u043C\u0435\u043D\u0438\u0442\u044C \u0437\u0430\u043F\u0440\u043E\u0441.":L("\u041D\u0430\u0436\u043C\u0438\u0442\u0435 \xAB\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u0434\u0430\u0447\u0430\xBB, \u0447\u0442\u043E\u0431\u044B \u043F\u043E\u0440\u0443\u0447\u0438\u0442\u044C \u0447\u0442\u043E-\u043D\u0438\u0431\u0443\u0434\u044C \u043A\u043E\u043C\u0430\u043D\u0434\u0435.")}</div>
+        ${s?"":`<p><button class="btn-primary" data-action="new-task">${L("\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u0434\u0430\u0447\u0430")}</button></p>`}
       </div>`;return}e.innerHTML=t.map(s=>{const a=agentInfo(s.agent),n=s.previewAuthor==="owner"?"\u0412\u044B":agentInfo(s.previewAuthor).name;return`
       <div class="item task-item ${s.unread?"unread":""} ${state.selectedTask===s.number?"active":""}" data-task="${s.number}">
         ${avatar(s.agent,"sm")}

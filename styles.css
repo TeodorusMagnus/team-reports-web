@@ -294,3 +294,6 @@ html[data-theme='throne'] ::-webkit-scrollbar-thumb { background-color: #4a3768;
 .theme-swatch { height: 46px; border-radius: 7px; display: flex; align-items: flex-end; gap: 5px; padding: 7px; }
 .theme-swatch i { display: block; height: 6px; border-radius: 3px; }
 .theme-name { font-size: 13px; font-weight: 600; color: var(--text); }
+
+/* Кнопка «Новая задача» в выезжающем меню — только в мобильной раскладке. */
+.m-new-task { display: none; }

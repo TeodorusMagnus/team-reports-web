@@ -176,3 +176,10 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
   .reader-actions { flex-basis: auto; }
   .reader-actions > * { flex: 0 0 auto; }
 }
+
+/* Телефон и Fold: в шапке списка нет «+», чтобы заголовок помещался целиком.
+   Новая задача — из меню разделов (в режиме задач) или из пустого списка. */
+@media (max-width: 1099px) {
+  #btn-new-task { display: none !important; }
+  body[data-mode='tasks'] .m-new-task { display: flex; justify-content: center; width: calc(100% - 4px); margin: 0 2px 14px; padding: 10px 14px; font-size: 14.5px; }
+}
