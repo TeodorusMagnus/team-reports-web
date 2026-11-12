@@ -168,10 +168,10 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .modal-backdrop[hidden] { display: none; }
 .modal { width: 540px; max-height: 90vh; overflow-y: auto; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 14px; padding: 22px 24px; box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5); user-select: text; }
 .modal h2 { margin: 0 0 14px; font-size: 18px; }
-fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px 14px; margin: 0 0 14px; display: flex; flex-direction: column; gap: 10px; }
+fieldset { border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 14px 14px; margin: 0 0 14px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 legend { color: var(--text-2); font-size: 12.5px; font-weight: 600; padding: 0 6px; }
 .modal label { display: flex; flex-direction: column; gap: 5px; font-size: 12.5px; color: var(--text-2); }
-.modal input:not([type='checkbox']) { background: var(--bg); border: 1px solid var(--line-2); border-radius: 8px; color: var(--text); font: inherit; font-size: 14px; padding: 7px 10px; outline: none; }
+.modal input:not([type='checkbox']) { min-width: 0; background: var(--bg); border: 1px solid var(--line-2); border-radius: 8px; color: var(--text); font: inherit; font-size: 14px; padding: 7px 10px; outline: none; }
 .modal input:focus { border-color: var(--accent); }
 .modal label.check { flex-direction: row; align-items: center; gap: 9px; font-size: 13.5px; color: var(--text); }
 .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
@@ -209,6 +209,7 @@ body[data-mode='tasks'] .tasks-only { display: inline-flex !important; }
 
 .reader .num { color: var(--text-3); font-weight: 500; }
 .hint-chip { font-size: 12px; color: var(--text-3); border: 1px dashed var(--line-2); padding: 0 8px; border-radius: 6px; }
+.hint-chip.warn { color: #f0b46a; border-color: rgba(240, 180, 106, 0.45); border-style: solid; }
 .hint-chip.ok { color: #5ee0a0; border-color: rgba(94, 224, 160, 0.35); border-style: solid; }
 .tags { align-items: center; }
 .task-brief { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 18px; margin-bottom: 22px; }
@@ -399,3 +400,22 @@ body[data-mode='today'] .list-pane { display: none; }
 @container (min-width: 920px) { .t-board { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 /* в одну колонку пустые разделы только занимают место */
 @container (max-width: 479px) { .t-col.is-empty { display: none; } }
+/* ---------- автообновление ---------- */
+.update-pill { text-align: left; border: 1px solid var(--accent); background: var(--accent-soft); color: var(--text); border-radius: 10px; padding: 8px 10px; font: inherit; font-size: 12.5px; line-height: 1.35; cursor: pointer; }
+.update-pill:hover:not(:disabled) { background: var(--accent); color: var(--on-accent); }
+.update-pill:disabled { cursor: default; border-color: var(--line-2); background: var(--bg-3); color: var(--text-2); }
+.hint.error { color: #ff8a8a; display: block; margin-top: 4px; }
+#owner-key-box [hidden] { display: none; }
+.owner-key-actions { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin: 4px 0 8px; }
+.owner-key-actions .check { margin: 0; }
+.owner-key-new { margin: 4px 0 8px; padding: 10px 12px; border: 1px solid var(--line-2); border-radius: 8px; }
+.owner-key-new .hint { margin: 0 0 8px; }
+.owner-key-new .owner-key-row + .hint { margin: 8px 0 0; }
+.owner-key-row { display: flex; gap: 8px; align-items: center; }
+.owner-key-row input { flex: 1; min-width: 0; font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
+.owner-key-row .btn-secondary { flex: none; }
+.update-row { display: flex; align-items: center; gap: 12px; }
+.update-row #update-text { flex: 1; color: var(--text-2); font-size: 13px; line-height: 1.45; }
+.update-row .btn-secondary { flex: none; }
+#update-box[hidden], #update-pill[hidden] { display: none; }
+.update-row .btn-secondary:disabled { opacity: .5; cursor: default; }

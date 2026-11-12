@@ -44,6 +44,7 @@
         <nav class="nav" id="nav-agents"></nav>
 
         <div class="sidebar-foot">
+          <button class="update-pill" id="update-pill" hidden></button>
           <div class="sync" id="sync-status"><span class="dot"></span><span class="sync-text">—</span></div>
           <button class="btn-ghost" id="btn-settings" title="Настройки">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" /><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.1-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9v.03a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z" /></svg>
@@ -124,12 +125,52 @@
           </details>
         </fieldset>
 
+        <fieldset id="owner-key-box">
+          <legend>Ключ Владыки</legend>
+          <p class="hint" id="owner-key-status"></p>
+          <label>
+            Ввести ключ
+            <input name="ownerKey" type="password" autocomplete="off" spellcheck="false" placeholder="43 символа" />
+            <span class="hint error" id="owner-key-error" hidden>Ключ должен состоять из 43 символов: латинские буквы, цифры, «-» и «_».</span>
+          </label>
+          <div class="owner-key-actions">
+            <button type="button" class="btn-secondary sm" id="owner-key-generate">Создать ключ</button>
+            <label class="check" id="owner-key-clear-row" hidden><input name="clearOwnerKey" type="checkbox" /> Удалить ключ с этого устройства</label>
+          </div>
+          <div class="owner-key-new" id="owner-key-new" hidden>
+            <p class="hint"><b>Новый ключ показан один раз.</b> Он уже подставлен в поле выше и сохранится кнопкой «Сохранить».</p>
+            <div class="owner-key-row">
+              <input id="owner-key-value" readonly spellcheck="false" />
+              <button type="button" class="btn-secondary sm" id="owner-key-copy">Скопировать</button>
+            </div>
+            <p class="hint"><b>Не отправляйте ключ в чат, почту или Telegram</b> — вводите его на других устройствах и в GitHub вручную.</p>
+          </div>
+          <details class="howto">
+            <summary>Зачем ключ и как его настроить</summary>
+            <p>Ключ подписывает ваши задачи и ответы. Агенты выполняют только подписанное: задачи, созданные чужим токеном, помечаются как гостевые и агентам не передаются.</p>
+            <ol>
+              <li>Создайте ключ здесь, в Windows-версии, и нажмите «Сохранить».</li>
+              <li>Откройте репозиторий на GitHub → <b>Settings</b> → <b>Secrets and variables</b> → <b>Actions</b>, нажмите <b>New repository secret</b>, имя <code>OWNER_KEY</code>, значение — ключ.</li>
+              <li>Введите тот же ключ на телефоне и в веб-версии (поле «Ввести ключ»).</li>
+            </ol>
+            <p><b>Никогда не пересылайте ключ через чат, почту или Telegram</b> и не давайте его друзьям: у них свои токены без ключа. Если ключ мог утечь — создайте новый, замените секрет и введите его заново на всех устройствах.</p>
+          </details>
+        </fieldset>
+
         <fieldset>
           <legend>Поведение</legend>
           <label>Проверять каждые, минут<input name="pollMinutes" type="number" min="1" max="120" /></label>
           <label class="check"><input name="notifications" type="checkbox" /> Уведомления Windows о новых отчётах</label>
           <label class="check"><input name="autoStart" type="checkbox" /> Запускать вместе с Windows (свёрнутым в трей)</label>
           <label class="check"><input name="startHidden" type="checkbox" /> Всегда запускаться свёрнутым в трей</label>
+        </fieldset>
+
+        <fieldset id="update-box" hidden>
+          <legend>Обновления</legend>
+          <div class="update-row">
+            <span id="update-text"></span>
+            <button type="button" class="btn-secondary sm" id="update-check">Проверить</button>
+          </div>
         </fieldset>
 
         <div class="modal-actions">
