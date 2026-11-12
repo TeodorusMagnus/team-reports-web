@@ -625,3 +625,26 @@ html[data-density='compact'] .item.unread::after { top: 50%; margin-top: -4px; }
 .p-row-time { color: var(--text-3); font-size: 12px; flex: none; }
 .p-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
 html[data-density='compact'] .profile-card { padding: 9px 12px; }
+
+/* ---------- доска поручений (tasks.js: renderTaskBoard) ---------- */
+.tb-wrap { container-type: inline-size; padding: 4px 12px 12px; }
+.tb-board { margin-top: 6px; }
+.tb-card { --k: var(--text-3); }
+.tb-card.s-new { --k: var(--accent); }
+.tb-card.s-in-progress { --k: #3ecf8e; }
+.tb-card.s-blocked { --k: var(--high); }
+.tb-card.s-done { --k: var(--line-2); opacity: 0.8; }
+.tb-card .t-row-text { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; white-space: normal; overflow: hidden; }
+.tb-card .t-time { margin-left: auto; color: var(--text-3); }
+.tb-card.unread .t-row-title::after { content: ''; display: inline-block; width: 7px; height: 7px; margin-left: 6px; border-radius: 50%; background: var(--accent); vertical-align: middle; }
+.tb-card.active { border-color: var(--accent) !important; background: var(--bg-3) !important; }
+.tb-card .t-author { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.tb-close { display: none; }
+/* ПК: на доске список занимает всё место, карточка задачи открывается справа только при выборе. */
+@media (min-width: 1100px) {
+  body[data-mode='tasks'][data-tlayout='board'] .app { grid-template-columns: 248px minmax(0, 1fr) 0; }
+  body[data-mode='tasks'][data-tlayout='board'] .reader { display: none; }
+  body[data-mode='tasks'][data-tlayout='board'].has-task .app { grid-template-columns: 248px minmax(0, 1fr) minmax(420px, 44%); }
+  body[data-mode='tasks'][data-tlayout='board'].has-task .reader { display: block; }
+  body[data-mode='tasks'][data-tlayout='board'] .tb-close { display: inline-flex; }
+}
