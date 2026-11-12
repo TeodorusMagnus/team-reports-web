@@ -169,11 +169,9 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
 #btn-new-task { font-size: 0; gap: 0; width: 40px; height: 40px; padding: 0; justify-content: center; border-radius: 12px; }
 #btn-new-task svg { width: 20px; height: 20px; margin: 0; }
 
-/* Широкая карточка (планшет в альбомной ориентации): кнопки в строку с заголовком.
-   На Fold7 в альбомной карточке ~500 dp — там кнопки остаются отдельной строкой. */
+/* Широкая карточка (планшет в альбомной ориентации): кнопки отдельной строкой,
+   но по ширине текста, а не растянутые. */
 @media (min-width: 960px) and (max-width: 1099px) and (min-height: 500px) {
-  .reader-head { flex-wrap: nowrap; }
-  .reader-actions { flex-basis: auto; }
   .reader-actions > * { flex: 0 0 auto; }
 }
 

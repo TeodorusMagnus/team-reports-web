@@ -120,11 +120,13 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 /* ---------- reader ---------- */
 .reader { overflow-y: auto; min-width: 0; background: var(--bg); user-select: text; }
 .reader-inner { max-width: 820px; margin: 0 auto; padding: 28px 40px 64px; }
-.reader-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.reader-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 14px; }
 .reader-who { flex: 1; min-width: 0; }
 .reader-who .name { font-weight: 600; }
 .reader-who .meta { color: var(--text-3); font-size: 12.5px; }
-.reader-actions { display: flex; gap: 6px; }
+/* Пять кнопок не помещаются рядом с автором — всегда отдельной строкой под ним. */
+.reader-actions { display: flex; flex-wrap: wrap; flex-basis: 100%; gap: 6px; }
+.reader-actions > * { white-space: nowrap; }
 .btn-secondary, .btn-primary { border-radius: 8px; padding: 7px 14px; border: 1px solid var(--line-2); background: var(--bg-3); display: inline-flex; align-items: center; gap: 7px; font-size: 13px; }
 .btn-secondary:hover { border-color: var(--text-3); }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
@@ -449,5 +451,22 @@ body.readonly #m-new-task,
 body.readonly #composer,
 body.readonly [data-action="task-close"],
 body.readonly [data-action="task-reopen"],
+body.readonly [data-action="ask-report"],
 body.readonly [data-action="task-approve"] { display: none !important; }
 .composer-to { text-align: right; }
+
+/* Избранное и вопрос по донесению */
+.reader-actions .btn-secondary svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.reader-actions .btn-secondary { display: inline-flex; align-items: center; gap: 6px; }
+.fav-btn.on { color: var(--accent); border-color: var(--accent); }
+.fav-btn.on svg { fill: currentColor; }
+.fav-mark { display: inline-flex; vertical-align: -2px; margin-right: 4px; color: var(--accent); }
+.fav-mark svg { width: 12px; height: 12px; fill: currentColor; stroke: none; }
+/* Оглавление */
+.toc { margin: 0 0 18px; padding: 10px 14px; border: 1px solid var(--line-2); border-radius: 10px; background: var(--bg-2); }
+.toc summary { cursor: pointer; font-weight: 600; color: var(--text-2); font-size: 14px; }
+.toc ol { list-style: none; margin: 10px 0 2px; padding: 0; display: grid; gap: 2px; }
+.toc li.lvl3 { padding-left: 16px; }
+.toc button { all: unset; cursor: pointer; display: block; padding: 4px 6px; border-radius: 6px; color: var(--text); font-size: 14px; line-height: 1.35; }
+.toc button:hover, .toc button:focus-visible { background: var(--accent-soft); }
+.md h1[id], .md h2[id], .md h3[id] { scroll-margin-top: 12px; }
