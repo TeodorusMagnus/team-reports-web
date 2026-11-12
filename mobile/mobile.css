@@ -97,6 +97,9 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
     background: var(--bg-2); border-top: 1px solid var(--line);
   }
   #m-tabs .modes { margin: 0; height: 44px; }
+  /* Голосовой режим: панель над нижними вкладками. */
+  #voice-bar { bottom: calc(70px + var(--sab)); }
+  body.m-reader:not([data-mode='today']) #voice-bar { bottom: calc(12px + var(--sab)); }
   #m-tabs .mode { font-size: 14.5px; }
 
   /* ----- выезжающее меню ----- */

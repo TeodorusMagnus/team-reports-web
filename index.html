@@ -46,6 +46,10 @@
         <div class="sidebar-foot">
           <button class="update-pill" id="update-pill" hidden></button>
           <div class="sync" id="sync-status"><span class="dot"></span><span class="sync-text">—</span></div>
+          <button class="btn-ghost" id="btn-voice-side" data-voice-mode title="Новые донесения и ответы подряд, управление голосом">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3" /><rect x="3" y="14" width="5" height="7" rx="2" /><rect x="16" y="14" width="5" height="7" rx="2" /></svg>
+            <span id="voice-side-label">Голосовой режим</span>
+          </button>
           <button class="btn-ghost" id="btn-settings" title="Настройки">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" /><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1.03 1.56V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1.1-1.56 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.6 15a1.7 1.7 0 0 0-1.56-1.03H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.6 8.9a1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34H9a1.7 1.7 0 0 0 1-1.56V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.56 1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.4 9v.03a1.7 1.7 0 0 0 1.56 1.03H21a2 2 0 1 1 0 4h-.09A1.7 1.7 0 0 0 19.4 15Z" /></svg>
             Настройки
@@ -62,6 +66,9 @@
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg><span id="btn-new-task-label">Задача</span>
               </button>
               <button class="icon-btn tasks-only" id="btn-task-layout" title="Показать доской по статусам" aria-pressed="false"></button>
+              <button class="icon-btn reports-only" id="btn-voice-mode" data-voice-mode title="Голосовой режим: слушать новое подряд">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 15v-3a8 8 0 0 1 16 0v3" /><rect x="3" y="14" width="5" height="7" rx="2" /><rect x="16" y="14" width="5" height="7" rx="2" /></svg>
+              </button>
               <button class="icon-btn" id="btn-read-all" title="Отметить все прочитанными">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m2 13 4 4L16 7M10 15l2 2L22 7" /></svg>
               </button>
@@ -234,5 +241,6 @@
     <script src="renderer.js"></script>
     <script src="mobile/mobile-ui.js"></script>
     <script src="voice.js"></script>
+    <script src="voicemode.js"></script>
   </body>
 </html>
