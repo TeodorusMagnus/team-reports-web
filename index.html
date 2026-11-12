@@ -157,6 +157,16 @@
           </details>
         </fieldset>
 
+        <fieldset id="guest-name-box" hidden>
+          <legend>Ваше имя</legend>
+          <label>
+            Подпись в задачах и ответах
+            <input name="guestName" maxlength="24" autocomplete="nickname" spellcheck="false" placeholder="например, Матвей" />
+            <span class="hint error" id="guest-name-error" hidden></span>
+          </label>
+          <p class="hint">Команда увидит «Гость: имя» вместо «Гость». Это только подпись: прав она не даёт, задачи без ключа Владыки остаются гостевыми. От 2 до 24 символов, буквы одного алфавита, цифры, пробел, дефис, апостроф, точка; имена Владыки и команды заняты.</p>
+        </fieldset>
+
         <fieldset>
           <legend>Поведение</legend>
           <label>Проверять каждые, минут<input name="pollMinutes" type="number" min="1" max="120" /></label>
