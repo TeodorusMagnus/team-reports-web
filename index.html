@@ -35,6 +35,7 @@
           </div>
         </div>
 
+        <div class="spaces" id="spaces" hidden></div>
         <div class="modes" id="modes"></div>
 
         <button class="btn-primary m-new-task" data-action="new-task" id="m-new-task">Новая задача</button>
@@ -61,6 +62,9 @@
         <header class="list-head">
           <div class="list-title-row">
             <h1 id="list-title"></h1>
+            <span class="space-chip" id="space-chip" hidden title="Раздел «Личное»: видно только с ключом Владыки, в Telegram и гостям не уходит">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2" /><path d="M8 11V8a4 4 0 0 1 8 0v3" /></svg><span class="space-chip-text">Личное</span>
+            </span>
             <div class="list-actions">
               <button class="btn-primary sm tasks-only" id="btn-new-task" title="Новая задача (N)">
                 <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14" /></svg><span id="btn-new-task-label">Задача</span>
@@ -150,6 +154,7 @@
         <fieldset id="owner-key-box">
           <legend>Ключ Владыки</legend>
           <p class="hint" id="owner-key-status"></p>
+          <p class="hint" id="private-space-hint" hidden></p>
           <label>
             Ввести ключ
             <input name="ownerKey" type="password" autocomplete="off" spellcheck="false" placeholder="43 символа" />
@@ -215,6 +220,7 @@
     <div class="modal-backdrop" id="new-task" hidden>
       <form class="modal" id="task-form" autocomplete="off">
         <h2 id="new-task-title">Новая задача</h2>
+        <p class="space-note" id="space-note">В раздел «Личное»: только для вас и команды, в Telegram и гостям не уходит.</p>
         <fieldset>
           <legend>Исполнитель</legend>
           <div class="agent-picks" id="task-agents"></div>

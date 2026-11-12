@@ -201,6 +201,19 @@ legend { color: var(--text-2); font-size: 12.5px; font-weight: 600; padding: 0 6
 .mode:hover { color: var(--text); }
 .mode.active { background: var(--bg-3); color: var(--text); box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset; }
 .mode .badge { height: 18px; min-width: 18px; font-size: 11px; }
+/* Раздел «Личное»: переключатель, отметка у заголовка, полоса акцента сверху списка */
+.spaces { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; border: 1px dashed var(--line); border-radius: 10px; padding: 3px; margin: 0 2px 8px; }
+.spaces[hidden] { display: none; }
+.space { border: 0; background: none; color: var(--text-2); padding: 5px 8px; border-radius: 7px; display: inline-flex; align-items: center; justify-content: center; gap: 5px; font-weight: 600; font-size: 12.5px; }
+.space svg, .space-chip svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; }
+.space.active { background: var(--bg-3); color: var(--text); }
+.space[data-space='private'].active { background: var(--accent); color: var(--on-accent, #fff); }
+.space-chip { display: inline-flex; align-items: center; gap: 4px; margin-left: 8px; margin-right: auto; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 600; color: var(--accent); border: 1px solid var(--accent); white-space: nowrap; }
+.space-chip[hidden] { display: none; }
+body.space-private .list-head { box-shadow: inset 0 3px 0 var(--accent); }
+@media (max-width: 640px) { .space-chip { padding: 3px 5px; margin-left: 6px; } .space-chip-text { display: none; } }
+.space-note { display: none; margin: -4px 0 10px; font-size: 12.5px; color: var(--accent); }
+body.space-private .space-note { display: block; }
 .badge.warn { background: var(--high); }
 
 .tasks-only { display: none !important; }
