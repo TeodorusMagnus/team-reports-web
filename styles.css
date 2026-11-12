@@ -419,3 +419,15 @@ body[data-mode='today'] .list-pane { display: none; }
 .update-row .btn-secondary { flex: none; }
 #update-box[hidden], #update-pill[hidden] { display: none; }
 .update-row .btn-secondary:disabled { opacity: .5; cursor: default; }
+
+/* Токен только для чтения: запись в GitHub недоступна. */
+.readonly-hint { display: none; margin-top: 14px; }
+body.readonly .readonly-hint { display: block; }
+body.readonly [data-action="new-task"],
+body.readonly #btn-new-task,
+body.readonly #m-new-task,
+body.readonly #composer,
+body.readonly [data-action="task-close"],
+body.readonly [data-action="task-reopen"],
+body.readonly [data-action="task-approve"] { display: none !important; }
+.composer-to { text-align: right; }
