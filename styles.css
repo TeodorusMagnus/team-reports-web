@@ -131,27 +131,27 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .btn-secondary:hover { border-color: var(--text-3); }
 .btn-primary { background: var(--accent); border-color: var(--accent); color: var(--on-accent); font-weight: 600; }
 .btn-primary:hover { filter: brightness(1.08); }
-.reader h1.title { font-size: 26px; line-height: 1.25; margin: 6px 0 10px; font-weight: 700; letter-spacing: -0.2px; }
+.reader h1.title { font-size: calc(26px * var(--ts)); line-height: 1.25; margin: 6px 0 10px; font-weight: 700; letter-spacing: -0.2px; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
 .tag { font-size: 12px; color: var(--text-2); background: var(--bg-3); border: 1px solid var(--line); padding: 1px 8px; border-radius: 6px; }
 .divider { height: 1px; background: var(--line); margin: 4px 0 22px; }
 
-.md { font-size: 15px; line-height: 1.7; color: var(--md-text); overflow-wrap: anywhere; }
+.md { font-size: calc(15px * var(--ts)); line-height: 1.7; color: var(--md-text); overflow-wrap: anywhere; }
 .md h1, .md h2, .md h3, .md h4 { color: var(--text); line-height: 1.3; margin: 1.6em 0 0.6em; }
-.md h1 { font-size: 22px; } .md h2 { font-size: 19px; } .md h3 { font-size: 16.5px; } .md h4 { font-size: 15px; }
+.md h1 { font-size: calc(22px * var(--ts)); } .md h2 { font-size: calc(19px * var(--ts)); } .md h3 { font-size: calc(16.5px * var(--ts)); } .md h4 { font-size: calc(15px * var(--ts)); }
 .md > :first-child { margin-top: 0; }
 .md p, .md ul, .md ol, .md blockquote, .md pre, .md table { margin: 0 0 1em; }
 .md a { color: var(--accent); text-decoration: none; }
 .md a:hover { text-decoration: underline; }
 .md code { font-family: var(--mono); font-size: 0.88em; background: var(--bg-3); border: 1px solid var(--line); padding: 1px 5px; border-radius: 5px; }
 .md pre { background: var(--bg-2); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; overflow-x: auto; }
-.md pre code { background: none; border: 0; padding: 0; font-size: 13px; }
+.md pre code { background: none; border: 0; padding: 0; font-size: calc(13px * var(--ts)); }
 .md blockquote { border-left: 3px solid var(--line-2); padding: 2px 16px; color: var(--text-2); }
 /* Таблицы: обёртка прокручивается по горизонтали, сама таблица не сжимается в столбик.
    .md переносит слова «где угодно» (overflow-wrap: anywhere) — в таблицах это давало
    колонки шириной в одну букву, поэтому здесь перенос только по словам. */
 .md .table-wrap { margin: 0 0 1em; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
-.md table { border-collapse: collapse; width: auto; min-width: 100%; font-size: 14px; margin: 0; }
+.md table { border-collapse: collapse; width: auto; min-width: 100%; font-size: calc(14px * var(--ts)); margin: 0; }
 .md th, .md td { border: 1px solid var(--line); padding: 7px 11px; text-align: left; vertical-align: top;
   overflow-wrap: normal; word-break: normal; min-width: 7em; }
 .md th.nw, .md td.nw { white-space: nowrap; min-width: 0; }
@@ -232,7 +232,7 @@ body[data-mode='tasks'] .tasks-only { display: inline-flex !important; }
 .msg.mine .msg-body { background: var(--mine-bg); border-color: var(--mine-line); }
 .msg-head { display: flex; gap: 10px; align-items: baseline; margin-bottom: 4px; font-size: 13px; }
 .msg-head span { color: var(--text-3); font-size: 12px; }
-.msg .md { font-size: 14.5px; }
+.msg .md { font-size: calc(14.5px * var(--ts)); }
 .composer { position: sticky; bottom: 0; background: var(--bg); padding: 10px 0 4px; }
 .composer textarea, .modal textarea { width: 100%; resize: vertical; background: var(--bg-2); border: 1px solid var(--line-2); border-radius: 10px; color: var(--text); font: inherit; font-size: 14px; padding: 10px 12px; outline: none; }
 .composer textarea:focus, .modal textarea:focus { border-color: var(--accent); }
@@ -470,3 +470,29 @@ body.readonly [data-action="task-approve"] { display: none !important; }
 .toc button { all: unset; cursor: pointer; display: block; padding: 4px 6px; border-radius: 6px; color: var(--text); font-size: 14px; line-height: 1.35; }
 .toc button:hover, .toc button:focus-visible { background: var(--accent-soft); }
 .md h1[id], .md h2[id], .md h3[id] { scroll-margin-top: 12px; }
+
+/* ---------- размер текста и плотность списка (настройки, хранятся на устройстве) ----------
+   <html data-text>: текст донесений, задач и ответов умножается на --ts; строки списков
+   масштабируются целиком (zoom), чтобы не переписывать размеры для каждой темы и раскладки.
+   <html data-density="compact">: в списках без краткого описания и с меньшими отступами;
+   у поручений остаются время и число ответов. */
+:root { --ts: 1; }
+html[data-text='large'] { --ts: 1.15; }
+html[data-text='xl'] { --ts: 1.3; }
+html[data-text='large'] .item, html[data-text='xl'] .item { zoom: var(--ts); }
+html[data-density='compact'] .item { padding-top: 7px; padding-bottom: 7px; }
+html[data-density='compact'] .item-summary { display: none; }
+/* Время и «ответов: N» у поручений остаются; гость или неподтверждённый автор последнего
+   сообщения — короткой меткой вместо скрытого описания. */
+.who-chip { display: none; }
+html[data-density='compact'] .who-chip { display: inline-block; font-size: 11px; font-weight: 600; color: var(--text-2); background: var(--bg-3); border: 1px solid var(--line-2); border-radius: 6px; padding: 0 6px; margin: 1px 0; }
+html[data-density='compact'] .item-title { -webkit-line-clamp: 1; margin-bottom: 0; }
+html[data-density='compact'] .item.unread::after { top: 50%; margin-top: -4px; }
+.seg { display: flex; flex-wrap: wrap; gap: 6px; }
+.seg label { display: inline-flex !important; flex-direction: row !important; margin: 0 !important; }
+.seg input { position: absolute; opacity: 0; pointer-events: none; }
+.seg span { padding: 6px 12px; border: 1px solid var(--line-2); border-radius: 8px; color: var(--text-2); font-size: 13px; cursor: pointer; white-space: nowrap; }
+.seg input:checked + span { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); color: var(--text); }
+.seg input:focus-visible + span { outline: 2px solid var(--accent); outline-offset: 2px; }
+.view-row { margin-top: 12px; }
+.view-row > .hint { display: block; margin-bottom: 6px; }

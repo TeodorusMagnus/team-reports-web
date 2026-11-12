@@ -25,6 +25,7 @@
             <span class="item-author">${esc(n.name)} \xB7 #${s.number}</span>
             ${priorityChip(s)}${statusChip(s)}
           </div>
+          ${s.previewAuthor==="guest"||s.previewAuthor==="unverified"?`<div class="who-chip">${esc(a)}</div>`:""}
           <div class="item-title">${esc(s.title)}</div>
           <div class="item-summary"><b>${esc(a)}:</b> ${esc(plainPreview(s.preview)||"\u0431\u0435\u0437 \u043E\u043F\u0438\u0441\u0430\u043D\u0438\u044F")}</div>
           <div class="item-time-row">${esc(shortTime(taskTime(s)))}${s.comments.length?` \xB7 \u043E\u0442\u0432\u0435\u0442\u043E\u0432: ${s.comments.length}`:""}</div>

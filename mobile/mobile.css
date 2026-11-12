@@ -69,9 +69,9 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
   .reader-actions { flex-wrap: wrap; flex-basis: 100%; }
   .reader-actions > * { flex: 1 1 auto; justify-content: center; padding: 9px 12px; }
   .modal label[hidden] { display: none; }
-  .reader h1.title { font-size: 22px; }
-  .md { font-size: 15.5px; }
-  .md table { font-size: 13.5px; }
+  .reader h1.title { font-size: calc(22px * var(--ts)); }
+  .md { font-size: calc(15.5px * var(--ts)); }
+  .md table { font-size: calc(13.5px * var(--ts)); }
   .md th, .md td { padding: 6px 8px; min-width: 6.5em; }
   .md th.nw, .md td.nw { min-width: 0; }
   .welcome { margin-top: 6vh; padding: 0 20px; }
