@@ -352,6 +352,16 @@ body[data-mode='today'] .list-pane { display: none; }
 .today h1.title { margin: 2px 0 6px; }
 .t-lead { color: var(--text-2); margin: 0 0 14px; }
 .t-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.t-alert {
+  display: flex; flex-direction: column; gap: 2px; width: 100%; text-align: left; cursor: pointer;
+  margin: 0 0 16px; padding: 10px 14px; border-radius: 10px;
+  border: 1px solid color-mix(in srgb, var(--critical) 55%, transparent);
+  background: color-mix(in srgb, var(--critical) 10%, transparent); color: var(--text);
+  font: inherit;
+}
+.t-alert:hover { background: color-mix(in srgb, var(--critical) 16%, transparent); }
+.t-alert-title { font-weight: 600; color: var(--critical); font-size: 0.85em; }
+.t-alert-text { color: var(--text-2); overflow-wrap: anywhere; }
 .t-chip { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 12px; border-radius: 999px; background: var(--bg-3); border: 1px solid var(--line); color: var(--text-2); font-size: 13px; }
 .t-chip b { color: var(--text); font-size: 15px; }
 .t-chip.warn { border-color: var(--high); }
