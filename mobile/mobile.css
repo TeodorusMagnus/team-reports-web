@@ -136,7 +136,7 @@ body.mobile .app { margin-left: var(--sal); margin-right: var(--sar); }
   :root { --listw: clamp(320px, 42vw, 380px); }
   /* Узкий список: заголовок помельче и кнопки компактнее, чтобы «Все поручения» влезали целиком. */
   .list-title-row { gap: 2px; }
-  .list-title-row h1, html[data-theme='throne'] .list-title-row h1 { font-size: 18px; letter-spacing: 0; }
+  .list-title-row h1, html[data-ornate] .list-title-row h1, html[data-theme='throne'] .list-title-row h1 { font-size: 18px; letter-spacing: 0; }
   .list-title-row .icon-btn { width: 36px; height: 36px; }
   .list-title-row .icon-btn svg { width: 20px; height: 20px; }
   #btn-new-task { width: 36px !important; height: 36px !important; margin-right: 2px; }

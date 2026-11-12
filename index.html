@@ -86,17 +86,15 @@
 
         <fieldset>
           <legend>Оформление</legend>
-          <div class="theme-picker">
-            <label class="theme-option">
-              <input type="radio" name="theme" value="throne" />
-              <span class="theme-swatch" style="background:#120c1c;border:1px solid #4a3a1c"><i style="width:40%;background:#d9b45a"></i><i style="width:25%;background:#4a3768"></i></span>
-              <span class="theme-name">Тронный зал</span>
-            </label>
-            <label class="theme-option">
-              <input type="radio" name="theme" value="classic" />
-              <span class="theme-swatch" style="background:#0f1115;border:1px solid #262b35"><i style="width:40%;background:#7c9cff"></i><i style="width:25%;background:#323845"></i></span>
-              <span class="theme-name">Классическая</span>
-            </label>
+          <div class="theme-picker" id="theme-picker" role="radiogroup" aria-label="Тема"></div>
+          <div class="custom-theme" id="custom-theme" hidden>
+            <div class="color-rows">
+              <label class="color-row"><input type="color" name="customBg" />Фон</label>
+              <label class="color-row"><input type="color" name="customAccent" />Акцент</label>
+            </div>
+            <label class="check"><input type="checkbox" name="customOrnate" />Заголовки с засечками и подписи «донесения», «поручения»</label>
+            <span class="hint error" id="custom-contrast" hidden>Акцент плохо различим на этом фоне: кнопки и метки будет трудно читать.</span>
+            <span class="hint error" id="custom-text-contrast" hidden>На таком фоне плохо читается любой текст: выберите фон заметно темнее или светлее.</span>
           </div>
           <div class="view-row">
             <span class="hint">Размер текста</span>
@@ -227,6 +225,7 @@
 
     <script src="vendor/marked.umd.js"></script>
     <script src="vendor/purify.min.js"></script>
+    <script src="palette.js"></script>
     <script src="mobile/backend.js"></script>
     <script src="tasks.js"></script>
     <script src="today.js"></script>
