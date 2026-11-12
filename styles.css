@@ -101,6 +101,10 @@ svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width:
 .prio { font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.4px; }
 .prio.high { color: var(--high); background: rgba(245, 165, 36, 0.12); }
 .prio.critical { color: var(--critical); background: rgba(242, 85, 90, 0.13); }
+.review-badge { display: inline-flex; align-items: center; gap: 3px; font-size: 11px; font-weight: 600; padding: 1px 7px 1px 5px; border-radius: 6px; color: var(--ok, #3fb27f); background: rgba(63, 178, 127, 0.12); white-space: nowrap; cursor: help; }
+.review-badge svg { width: 12px; height: 12px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.review-badge.back { color: var(--critical); background: rgba(242, 85, 90, 0.13); }
+.tags .review-badge { margin-right: 6px; }
 .prio.low { color: var(--text-3); background: var(--bg-3); }
 
 .empty { color: var(--text-3); text-align: center; padding: 48px 28px; }
