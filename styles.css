@@ -751,3 +751,36 @@ body.voice-on .list::after, body.voice-on .reader::after { content: ''; display:
   .outbox-item { flex-wrap: wrap; }
   .outbox-actions { width: 100%; justify-content: flex-end; }
 }
+
+/* ---------- повторяющиеся поручения (1.28.0) ---------- */
+.recur-field { margin-bottom: 12px; }
+.due-field[hidden] { display: none; }
+.recur-opts { display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+.recur-opts[hidden], .recur-days[hidden], .recur-row label[hidden] { display: none; }
+.recur-days { display: flex; flex-wrap: wrap; gap: 6px; }
+.day-pick { display: inline-flex; }
+.day-pick input { position: absolute; opacity: 0; pointer-events: none; }
+.day-pick > span { min-width: 38px; text-align: center; padding: 5px 8px; border: 1px solid var(--line-2); border-radius: 8px; cursor: pointer; color: var(--text-2); font-size: 13px; }
+.day-pick input:checked + span { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
+.day-pick input:focus-visible + span { outline: 2px solid var(--accent); }
+.recur-row { display: flex; flex-wrap: wrap; gap: 10px; }
+.recur-row label { display: flex; flex-direction: column; gap: 4px; font-size: 12px; color: var(--text-3); margin: 0; }
+.modal select { background: var(--bg); border: 1px solid var(--line-2); border-radius: 8px; color: var(--text); font: inherit; font-size: 14px; padding: 6px 8px; outline: none; }
+.modal select:focus { border-color: var(--accent); }
+.due-pick input:disabled + span { opacity: 0.45; cursor: not-allowed; }
+.recur-chip { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 6px; white-space: nowrap; color: var(--accent); background: var(--accent-soft); border: 0; font-family: inherit; }
+button.recur-chip { cursor: pointer; font-size: 12px; padding: 0 8px; }
+.recur-chip.inst { color: var(--text-2); background: var(--bg-3); }
+.recur-chip.off { color: var(--text-3); background: var(--bg-3); }
+.recur-chip.bad { color: var(--critical); background: color-mix(in srgb, var(--critical) 14%, transparent); }
+.recur-box { border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; background: var(--bg-2); }
+.recur-box .hint { margin: 6px 0 0; }
+.recur-rule { font-size: 15px; font-weight: 600; color: var(--text); }
+.recur-rule .hint { font-weight: 400; }
+.warn-text { color: var(--critical); }
+.recur-runs-label { margin-top: 16px; }
+.recur-runs { display: flex; flex-direction: column; gap: 6px; margin-top: 6px; }
+.recur-run { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg-2); color: var(--text-2); text-align: left; cursor: pointer; font: inherit; font-size: 13px; }
+.recur-run:hover { border-color: var(--line-2); }
+.recur-run-title { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+@media (max-width: 640px) { .recur-run { grid-template-columns: 1fr auto auto; } .recur-run-title { grid-column: 1 / -1; grid-row: 2; } }

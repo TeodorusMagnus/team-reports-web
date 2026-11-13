@@ -229,6 +229,47 @@
         <label>Подробности
           <textarea name="body" data-voice rows="7" placeholder="Контекст, ограничения, каким должен быть результат. Поддерживается Markdown."></textarea>
         </label>
+        <fieldset class="recur-field">
+          <legend>Повтор</legend>
+          <div class="due-picks" id="task-recur">
+            <label class="due-pick"><input type="radio" name="recur" value="" checked /><span>Не повторять</span></label>
+            <label class="due-pick"><input type="radio" name="recur" value="daily" /><span>Каждый день</span></label>
+            <label class="due-pick"><input type="radio" name="recur" value="weekdays" /><span>По будням</span></label>
+            <label class="due-pick"><input type="radio" name="recur" value="weekly" /><span>По дням недели</span></label>
+            <label class="due-pick"><input type="radio" name="recur" value="monthly" /><span>Раз в месяц</span></label>
+          </div>
+          <div class="recur-opts" id="task-recur-opts" hidden>
+            <div class="recur-days" id="task-recur-days" hidden>
+              <label class="day-pick"><input type="checkbox" name="recurDay" value="1" /><span>пн</span></label>
+              <label class="day-pick"><input type="checkbox" name="recurDay" value="2" /><span>вт</span></label>
+              <label class="day-pick"><input type="checkbox" name="recurDay" value="3" /><span>ср</span></label>
+              <label class="day-pick"><input type="checkbox" name="recurDay" value="4" /><span>чт</span></label>
+              <label class="day-pick"><input type="checkbox" name="recurDay" value="5" /><span>пт</span></label>
+              <label class="day-pick"><input type="checkbox" name="recurDay" value="6" /><span>сб</span></label>
+              <label class="day-pick"><input type="checkbox" name="recurDay" value="0" /><span>вс</span></label>
+            </div>
+            <div class="recur-row">
+              <label id="task-recur-month" hidden>Число
+                <select name="recurMonthDay"></select>
+              </label>
+              <label>Время
+                <select name="recurTime"></select>
+              </label>
+              <label>Срок каждого
+                <select name="recurDue">
+                  <option value="">без срока</option>
+                  <option value="0">в тот же день</option>
+                  <option value="1">через 1 день</option>
+                  <option value="2">через 2 дня</option>
+                  <option value="3">через 3 дня</option>
+                  <option value="7">через неделю</option>
+                </select>
+              </label>
+            </div>
+            <p class="hint due-preview" id="task-recur-preview"></p>
+          </div>
+          <p class="hint" id="task-recur-nokey" hidden>Повтор доступен только на устройстве с ключом Владыки: каждое повторение уходит исполнителю с вашей подписью.</p>
+        </fieldset>
         <fieldset class="due-field">
           <legend>Срок</legend>
           <div class="due-picks" id="task-due">
@@ -246,7 +287,7 @@
           </div>
           <p class="hint due-preview" id="task-due-preview"></p>
         </fieldset>
-        <p class="hint">Срок попадёт в текст задачи строкой «Срок: до …». Важность исполнитель оценит сам с учётом срока. Задача будет доставлена ему автоматически в течение пары минут.</p>
+        <p class="hint" id="task-form-hint">Срок попадёт в текст задачи строкой «Срок: до …». Важность исполнитель оценит сам с учётом срока. Задача будет доставлена ему автоматически в течение пары минут.</p>
         <div class="modal-actions">
           <span class="form-error" id="task-error"></span>
           <button type="button" class="btn-secondary" id="task-cancel">Отмена</button>
@@ -259,6 +300,7 @@
     <script src="vendor/purify.min.js"></script>
     <script src="palette.js"></script>
     <script src="due.js"></script>
+    <script src="recur.js"></script>
     <script src="mobile/backend.js"></script>
     <script src="tasks.js"></script>
     <script src="today.js"></script>
