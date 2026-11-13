@@ -784,3 +784,18 @@ button.recur-chip { cursor: pointer; font-size: 12px; padding: 0 8px; }
 .recur-run:hover { border-color: var(--line-2); }
 .recur-run-title { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 @media (max-width: 640px) { .recur-run { grid-template-columns: 1fr auto auto; } .recur-run-title { grid-column: 1 / -1; grid-row: 2; } }
+
+/* ---------- цепочки поручение ↔ донесение (1.29.0) ---------- */
+.chain-chip { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 6px; white-space: nowrap; color: var(--text-2); background: var(--bg-3); }
+.chain-note { display: flex; flex-direction: column; gap: 6px; margin: 10px 0 4px; font-size: 13px; color: var(--text-2); }
+.chain-note > div { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+.chain-label { color: var(--text-3); margin-right: 2px; }
+.chain-link { border: 1px solid var(--line); background: var(--bg-2); color: var(--text); border-radius: 8px; padding: 3px 9px; font: inherit; font-size: 13px; cursor: pointer; text-align: left; max-width: 100%; line-height: 1.4; }
+.chain-link:hover { border-color: var(--line-2); }
+.chain-st { color: var(--text-3); }
+.chain-block { margin: 0 0 14px; }
+.chain-block .brief-label { margin-bottom: 6px; }
+.chain-report { display: grid; grid-template-columns: auto 1fr auto auto; align-items: center; gap: 10px; width: 100%; padding: 8px 12px; margin-bottom: 6px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg-2); color: var(--text-2); text-align: left; cursor: pointer; font: inherit; font-size: 13px; }
+.chain-report:hover { border-color: var(--line-2); }
+.chain-report-title { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.chain-report-date { color: var(--text-3); white-space: nowrap; }
