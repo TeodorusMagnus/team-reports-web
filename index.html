@@ -227,9 +227,26 @@
         </fieldset>
         <label>Что нужно сделать<input name="title" data-voice required maxlength="200" placeholder="Например: подобрать монитор 27&quot; до 40 000 ₽" /></label>
         <label>Подробности
-          <textarea name="body" data-voice rows="7" placeholder="Контекст, ограничения, к какому сроку нужен результат. Поддерживается Markdown."></textarea>
+          <textarea name="body" data-voice rows="7" placeholder="Контекст, ограничения, каким должен быть результат. Поддерживается Markdown."></textarea>
         </label>
-        <p class="hint">Срочность исполнитель оценит сам. Задача будет доставлена ему автоматически в течение пары минут.</p>
+        <fieldset class="due-field">
+          <legend>Срок</legend>
+          <div class="due-picks" id="task-due">
+            <label class="due-pick"><input type="radio" name="due" value="" checked /><span>Без срока</span></label>
+            <label class="due-pick urgent"><input type="radio" name="due" value="urgent" /><span>Срочно</span></label>
+            <label class="due-pick"><input type="radio" name="due" value="today" /><span>Сегодня</span></label>
+            <label class="due-pick"><input type="radio" name="due" value="tomorrow" /><span>Завтра</span></label>
+            <label class="due-pick"><input type="radio" name="due" value="week" /><span>На неделе</span></label>
+            <label class="due-pick"><input type="radio" name="due" value="date" /><span>К дате…</span></label>
+          </div>
+          <div class="due-custom" id="task-due-custom" hidden>
+            <input type="date" name="dueDate" aria-label="Дата" />
+            <input type="time" name="dueTime" aria-label="Время (необязательно)" />
+            <span class="hint">время необязательно, по Москве</span>
+          </div>
+          <p class="hint due-preview" id="task-due-preview"></p>
+        </fieldset>
+        <p class="hint">Срок попадёт в текст задачи строкой «Срок: до …». Важность исполнитель оценит сам с учётом срока. Задача будет доставлена ему автоматически в течение пары минут.</p>
         <div class="modal-actions">
           <span class="form-error" id="task-error"></span>
           <button type="button" class="btn-secondary" id="task-cancel">Отмена</button>
@@ -241,6 +258,7 @@
     <script src="vendor/marked.umd.js"></script>
     <script src="vendor/purify.min.js"></script>
     <script src="palette.js"></script>
+    <script src="due.js"></script>
     <script src="mobile/backend.js"></script>
     <script src="tasks.js"></script>
     <script src="today.js"></script>

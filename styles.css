@@ -698,3 +698,37 @@ body.voice-on .list::after, body.voice-on .reader::after { content: ''; display:
   body.voice-on .list::after, body.voice-on .reader::after { height: 150px; }
 }
 .t-tools [data-voice-mode] { margin-left: auto; }
+
+/* ---------- срок поручения (1.26.0) ---------- */
+.due-chip { font-size: 11px; font-weight: 600; padding: 1px 7px; border-radius: 6px; white-space: nowrap; color: var(--text-2); background: var(--bg-3); }
+.due-chip.d-soon, .due-chip.urgent { color: var(--high); background: color-mix(in srgb, var(--high) 14%, transparent); }
+.due-chip.d-overdue { color: var(--critical); background: color-mix(in srgb, var(--critical) 14%, transparent); }
+.due-chip.d-done { color: var(--text-3); text-decoration: line-through; }
+.due-field { margin-bottom: 12px; }
+.due-picks { display: flex; flex-wrap: wrap; gap: 8px; }
+.due-pick { display: inline-flex; }
+.due-pick input { position: absolute; opacity: 0; pointer-events: none; }
+.due-pick > span { padding: 5px 12px; border: 1px solid var(--line-2); border-radius: 20px; cursor: pointer; color: var(--text-2); font-size: 13px; }
+.due-pick input:checked + span { border-color: var(--accent); background: var(--accent-soft); color: var(--text); }
+.due-pick.urgent input:checked + span { border-color: var(--high); background: color-mix(in srgb, var(--high) 16%, transparent); }
+.due-pick input:focus-visible + span { outline: 2px solid var(--accent); }
+.due-custom { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
+.due-custom[hidden] { display: none; }
+.due-custom input { width: auto; }
+.due-preview { margin: 6px 0 0; min-height: 1em; }
+.t-due { margin: 4px 0 14px; display: flex; flex-direction: column; gap: 6px; }
+.t-due h2 { font-size: 13px; font-weight: 600; color: var(--text-2); margin: 0 0 2px; display: flex; gap: 8px; align-items: center; }
+.t-due-row { display: grid; grid-template-columns: auto auto 1fr auto; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg-2); color: var(--text); text-align: left; cursor: pointer; font: inherit; }
+.t-due-row:hover { border-color: var(--line-2); }
+.t-due-when { font-size: 12px; font-weight: 600; white-space: nowrap; color: var(--text-2); }
+.t-due-row.d-soon .t-due-when { color: var(--high); }
+.t-due-row.d-overdue { border-color: color-mix(in srgb, var(--critical) 45%, transparent); }
+.t-due-row.d-overdue .t-due-when { color: var(--critical); }
+.t-due-title { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.t-due-who { font-size: 12px; color: var(--text-3); white-space: nowrap; }
+@media (max-width: 640px) {
+  .t-due-row { grid-template-columns: auto 1fr; grid-template-rows: auto auto; row-gap: 2px; }
+  .t-due-row .avatar { grid-row: span 2; }
+  .t-due-title { grid-column: 2; }
+  .t-due-who { display: none; }
+}
