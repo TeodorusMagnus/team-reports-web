@@ -566,7 +566,8 @@ body.readonly #composer,
 body.readonly [data-action="task-close"],
 body.readonly [data-action="task-reopen"],
 body.readonly [data-action="ask-report"],
-body.readonly [data-action="task-approve"] { display: none !important; }
+body.readonly [data-action="task-approve"],
+body.readonly .write-only { display: none !important; }
 .composer-to { text-align: right; }
 
 /* Избранное и вопрос по донесению */
@@ -799,3 +800,18 @@ button.recur-chip { cursor: pointer; font-size: 12px; padding: 0 8px; }
 .chain-report:hover { border-color: var(--line-2); }
 .chain-report-title { color: var(--text); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .chain-report-date { color: var(--text-3); white-space: nowrap; }
+
+/* ---------- проекты (1.30.0) ---------- */
+.modal .opt { color: var(--text-3); font-weight: 400; }
+.proj-chip { display: inline-flex; align-items: center; gap: 4px; font: inherit; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 6px; border: 0; cursor: pointer; color: var(--accent); background: var(--accent-soft); white-space: nowrap; }
+.proj-chip svg, .proj-edit svg, .project-strip svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linejoin: round; flex: none; }
+.proj-edit { display: inline-flex; align-items: center; gap: 4px; font: inherit; font-size: 12px; padding: 1px 8px; border-radius: 6px; border: 1px dashed var(--line-2); background: none; color: var(--text-3); cursor: pointer; white-space: nowrap; }
+.proj-edit:hover { color: var(--text-2); border-color: var(--text-3); }
+.project-editor { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 10px 0 4px; }
+.project-editor input { flex: 1 1 200px; min-width: 0; background: var(--bg); border: 1px solid var(--line-2); border-radius: 8px; color: var(--text); font: inherit; font-size: 14px; padding: 7px 10px; outline: none; }
+.project-editor input:focus { border-color: var(--accent); }
+.project-editor .form-error { flex-basis: 100%; }
+.project-strip { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 10px 6px; padding: 8px 12px; border-radius: 10px; background: var(--bg-2); border: 1px solid var(--line); color: var(--text-2); font-size: 13px; }
+.project-strip > span { flex: 1 1 auto; }
+.project-switch { border: 1px solid var(--line-2); background: var(--bg-3); color: var(--text); border-radius: 8px; padding: 3px 10px; font: inherit; font-size: 12.5px; cursor: pointer; white-space: nowrap; }
+.project-switch:hover { border-color: var(--accent); }

@@ -44,6 +44,9 @@
         <div class="nav-label">Команда</div>
         <nav class="nav" id="nav-agents"></nav>
 
+        <div class="nav-label" id="nav-projects-label" hidden>Проекты</div>
+        <nav class="nav" id="nav-projects"></nav>
+
         <div class="sidebar-foot">
           <button class="update-pill" id="update-pill" hidden></button>
           <div class="sync" id="sync-status"><span class="dot"></span><span class="sync-text">—</span></div>
@@ -229,6 +232,10 @@
         <label>Подробности
           <textarea name="body" data-voice rows="7" placeholder="Контекст, ограничения, каким должен быть результат. Поддерживается Markdown."></textarea>
         </label>
+        <label>Проект
+          <input name="project" list="project-list" maxlength="40" placeholder="Необязательно, например: Домашняя сеть" />
+        </label>
+        <datalist id="project-list"></datalist>
         <fieldset class="recur-field">
           <legend>Повтор</legend>
           <div class="due-picks" id="task-recur">
@@ -302,6 +309,7 @@
     <script src="due.js"></script>
     <script src="recur.js"></script>
     <script src="chain.js"></script>
+    <script src="projects.js"></script>
     <script src="mobile/backend.js"></script>
     <script src="tasks.js"></script>
     <script src="today.js"></script>
