@@ -732,3 +732,22 @@ body.voice-on .list::after, body.voice-on .reader::after { content: ''; display:
   .t-due-title { grid-column: 2; }
   .t-due-who { display: none; }
 }
+
+/* Очередь отправки: действия, которые ждут сети (app/lib/core.js) */
+.outbox { margin: 10px 12px; padding: 10px 12px; border: 1px solid rgba(240, 180, 106, 0.45); border-radius: 10px; background: rgba(240, 180, 106, 0.07); }
+.outbox-head { font-size: 12px; font-weight: 600; color: #f0b46a; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px; }
+.outbox-item { display: flex; align-items: center; gap: 10px; padding: 6px 0; border-top: 1px solid var(--line); }
+.outbox-item:first-of-type { border-top: 0; }
+.outbox-text { flex: 1; min-width: 0; }
+.outbox-title { font-size: calc(14px * var(--ts)); color: var(--text); overflow-wrap: anywhere; }
+.outbox-status { font-size: 12px; color: var(--text-3); margin-top: 2px; }
+.outbox-item.failed .outbox-status { color: #ff8a8a; }
+.outbox-item.confirm .outbox-status { color: #f0b46a; }
+.outbox-actions { display: flex; gap: 6px; flex-shrink: 0; }
+.outbox-actions .btn-secondary { padding: 4px 10px; font-size: 13px; }
+.msg.pending .msg-body { opacity: 0.75; border-style: dashed; }
+.pending-chip { color: #f0b46a; }
+@media (max-width: 520px) {
+  .outbox-item { flex-wrap: wrap; }
+  .outbox-actions { width: 100%; justify-content: flex-end; }
+}
